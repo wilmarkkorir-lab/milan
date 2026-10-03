@@ -32,6 +32,8 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#1a0533,
 .gift{width:92px;height:92px;background:linear-gradient(135deg,#ffc6e8,#a46be6);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:42px;cursor:pointer}
 .gift-grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
 .player{position:fixed;bottom:18px;right:18px;background:rgba(255,255,255,0.18);backdrop-filter:blur(12px);padding:12px 20px;border-radius:50px;display:flex;gap:12px;z-index:50}
+.video-section{text-align:center;margin:60px 0}
+.video-section video{width:100%;max-width:560px;border-radius:24px;box-shadow:0 0 40px rgba(164,107,230,0.7);border:3px solid rgba(255,255,255,0.3)}
 </style>
 </head>
 <body>
@@ -39,7 +41,7 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#1a0533,
 <div id="lock-screen"><div class="lock-box">
 <div style="font-size:60px">💜</div><h1>Millan</h1>
 <p>This secret page was made only for you<br>Enter password to unlock my heart</p>
-<input type="password" id="pwd" placeholder="Password is: millan 💜">
+<input type="password" id="pwd" placeholder="">
 <button onclick="unlock()">Unlock My Heart 🔓</button><div id="err"></div></div></div>
 <audio id="bgSong" loop><source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_2a7dcc5d73.mp3?filename=romantic-piano-112199.mp3" type="audio/mpeg"></audio>
 <div id="main">
@@ -52,6 +54,12 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#1a0533,
 <div style="text-align:center;margin:60px 0"><h2 style="font-family:'Great Vibes',cursive;font-size:48px">Your Surprise Gifts 🎁</h2><div class="gift-grid">
 <div class="gift" onclick="openGift(0)">🎁</div><div class="gift" onclick="openGift(1)">🎁</div><div class="gift" onclick="openGift(2)">🎁</div><div class="gift" onclick="openGift(3)">🎁</div><div class="gift" onclick="openGift(4)">🎁</div><div class="gift" onclick="openGift(5)">🎁</div>
 </div></div>
+<div class="video-section">
+<h2 style="font-family:'Great Vibes',cursive;font-size:44px;margin-bottom:20px">A Song For You, Millan 🎶</h2>
+<video id="loveVideo" controls autoplay muted loop>
+  <source src="public/korir1.mp4" type="video/mp4">
+</video>
+</div>
 <div style="text-align:center;margin:70px 20px"><div style="background:rgba(255,255,255,0.13);padding:36px 28px;border-radius:28px;max-width:560px;margin:auto">
 <h2 style="font-family:'Great Vibes',cursive;font-size:44px">Forever Yours, Millan</h2>
 <p style="margin:18px 0;line-height:1.9">Millan, every second with you is magic. You are my favorite thought in the morning and my sweetest dream at night. I love you more than code can express, but I hope this purple world makes you smile. 💜</p></div></div>
@@ -74,7 +82,9 @@ function openModal(k){document.getElementById('mTitle').innerHTML=letters[k].tit
 function closeModal(){document.getElementById('modal').classList.remove('show');}
 function openGift(idx){document.getElementById('mTitle').innerHTML="For Millan 🎁";document.getElementById('mText').innerHTML=gifts[idx];document.getElementById('modal').classList.add('show');}
 let playing=false;
-function playMusic(){const a=document.getElementById('bgSong');a.volume=0.5;a.play();playing=true;document.getElementById('playBtn').innerText='⏸️'}
+function playMusic(){const a=document.getElementById('bgSong');a.volume=0.5;a.play();playing=true;document.getElementById('playBtn').innerText='⏸️';const v=document.getElementById('loveVideo');if(v){v.muted=false;v.volume=0.8;}}
 function toggleMusic(){const a=document.getElementById('bgSong');if(playing){a.pause();document.getElementById('playBtn').innerText='🎵';playing=false}else{a.play();document.getElementById('playBtn').innerText='⏸️';playing=true}}
 document.getElementById('pwd').addEventListener('keydown',e=>{if(e.key==='Enter') unlock()});
-</script></body></html>
+     </script>
+  </body>
+</html>
